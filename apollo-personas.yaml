@@ -1,0 +1,110 @@
+# Apollo Contact Extraction Personas
+# Define reusable job title + industry combos for different verticals.
+# Use: python apollo-batch-runner.py --persona influencer_marketing
+
+personas:
+  # ENT Agency — Influencer Marketing focused
+  influencer_marketing:
+    name: "Influencer Marketing Decision Makers"
+    job_titles:
+      - "Influencer Marketing Manager"
+      - "Influencer Marketing Director"
+      - "Manager of Influencer Marketing"
+      - "Director of Influencer Marketing"
+      - "Head of Influencer Marketing"
+      - "Influencer Marketing Coordinator"
+      - "Creator Partnerships Manager"
+      - "Partnership Marketing Manager"
+    industries:
+      - "Supplements"
+      - "Beauty"
+      - "Health & Wellness"
+      - "Fitness"
+      - "Food & Beverage"
+      - "Fashion"
+      - "Home Decor"
+      - "Personal Care"
+    company_size:
+      - "1-10"
+      - "11-50"
+      - "51-200"
+      - "201-500"
+    output: "contacts_influencer_marketing.csv"
+
+  # Brand + Affiliate Marketing
+  brand_partnerships:
+    name: "Brand Partnership & Affiliate Managers"
+    job_titles:
+      - "Brand Partnership Manager"
+      - "Partnerships Manager"
+      - "Head of Partnerships"
+      - "Director of Partnerships"
+      - "Affiliate Marketing Manager"
+      - "Brand Manager"
+      - "Senior Brand Manager"
+      - "Brand Director"
+    industries:
+      - "Supplements"
+      - "Beauty"
+      - "Fashion"
+      - "Fitness Equipment"
+      - "Health Tech"
+      - "Food & Beverage"
+    output: "contacts_brand_partnerships.csv"
+
+  # Social Media / Content (adjacent decision-maker)
+  social_media_leadership:
+    name: "Social Media & Content Leadership"
+    job_titles:
+      - "Social Media Manager"
+      - "Social Media Director"
+      - "Head of Social Media"
+      - "Content Manager"
+      - "Content Director"
+      - "Social Media Specialist"
+      - "Marketing Director"
+    industries:
+      - "Supplements"
+      - "Beauty"
+      - "Fashion"
+      - "Fitness"
+      - "Health & Wellness"
+    output: "contacts_social_media.csv"
+
+  # Generic: DTC brands (any marketing role)
+  dtc_marketing_decision_makers:
+    name: "DTC Marketing Decision Makers (Any Role)"
+    job_titles:
+      - "Marketing Manager"
+      - "Marketing Director"
+      - "CMO"
+      - "Chief Marketing Officer"
+      - "VP Marketing"
+      - "Senior Marketing Manager"
+    industries:
+      - "E-commerce"
+      - "Consumer Goods"
+      - "Supplements"
+      - "Beauty"
+      - "Fashion"
+      - "Food & Beverage"
+      - "Home & Garden"
+      - "Electronics"
+    company_size:
+      - "11-50"
+      - "51-200"
+      - "201-500"
+      - "501-1000"
+    output: "contacts_dtc_marketing.csv"
+
+  # Template for custom vertical
+  _template:
+    name: "Template — Copy & customize"
+    job_titles:
+      - "Job Title 1"
+      - "Job Title 2"
+    industries:
+      - "Industry 1"
+      - "Industry 2"
+    company_size: []  # Optional; omit or empty to skip filter
+    output: "contacts_custom.csv"
