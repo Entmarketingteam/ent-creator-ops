@@ -302,13 +302,30 @@ Examples:
     logger = setup_logging(output_dir)
     logger.info(f"Starting Apollo extraction: titles={args.job_titles}, industries={args.industries}")
 
-    # Load API keys
-    apollo_key = os.getenv("APOLLO_API_KEY")
+    # Load API keys from Doppler
+    try:
+        apollo_key = subprocess.check_output(
+            ["doppler", "secrets", "get", "APOLLO_API_KEY",
+             "--project", "ent-agency-automation", "--config", "dev", "--plain"],
+            text=True
+        ).strip()
+    except subprocess.CalledProcessError:
+        apollo_key = os.getenv("APOLLO_API_KEY", "")
+
     if not apollo_key:
-        logger.error("APOLLO_API_KEY not set in environment. Run: doppler run -- python script.py")
+        logger.error("APOLLO_API_KEY not found in Doppler or environment.")
         sys.exit(1)
 
-    million_verifier_key = os.getenv("MILLION_VERIFIER_API_KEY")
+    # Million Verifier is optional
+    try:
+        million_verifier_key = subprocess.check_output(
+            ["doppler", "secrets", "get", "MILLION_VERIFIER_API_KEY",
+             "--project", "ent-agency-automation", "--config", "dev", "--plain"],
+            text=True
+        ).strip()
+    except subprocess.CalledProcessError:
+        million_verifier_key = os.getenv("MILLION_VERIFIER_API_KEY", "")
+
     if not million_verifier_key and not args.skip_validation:
         logger.warning("MILLION_VERIFIER_API_KEY not set. Email validation disabled.")
         args.skip_validation = True
