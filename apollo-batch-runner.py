@@ -57,7 +57,7 @@ class ApolloBackRunner:
         output_file = self.output_dir / config.get("output", f"contacts_{name}.csv")
 
         cmd = [
-            "python", str(Path(__file__).parent / "apollo-contact-extractor.py"),
+            "python3", str(Path(__file__).parent / "apollo-contact-extractor.py"),
             "--job-titles", *config.get("job_titles", []),
             "--industries", *config.get("industries", []),
             "--output", str(output_file),
