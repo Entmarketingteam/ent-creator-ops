@@ -14,7 +14,7 @@ doppler secrets get MILLION_VERIFIER_API_KEY --project ent-agency-automation --c
 ### 2. Run single extraction
 
 ```bash
-doppler run -- python apollo-contact-extractor.py \
+doppler run -- python3 apollo-contact-extractor.py \
   --job-titles "Influencer Marketing Manager" "Brand Partnership Director" \
   --industries "Supplements" "Beauty" \
   --output contacts.csv
@@ -65,7 +65,7 @@ apollo-personas.yaml
 ### Pattern 1: Single Vertical (No Babysitting)
 
 ```bash
-doppler run -- python apollo-contact-extractor.py \
+doppler run -- python3 apollo-contact-extractor.py \
   --job-titles "Influencer Marketing Manager" "Brand Director" \
   --industries "Supplements" "Beauty" \
   --output ~/Desktop/supplements_beauty_contacts.csv
@@ -77,7 +77,7 @@ doppler run -- python apollo-contact-extractor.py \
 - Next run with `--resume` picks up from last page
 
 ```bash
-doppler run -- python apollo-contact-extractor.py \
+doppler run -- python3 apollo-contact-extractor.py \
   --job-titles "Influencer Marketing Manager" "Brand Director" \
   --industries "Supplements" "Beauty" \
   --output ~/Desktop/supplements_beauty_contacts.csv \
@@ -109,7 +109,7 @@ Runs all personas sequentially, dedupes across all outputs, merges into `contact
 ### Pattern 4: Dry Run (Test Without Costs)
 
 ```bash
-doppler run -- python apollo-contact-extractor.py \
+doppler run -- python3 apollo-contact-extractor.py \
   --job-titles "Test Title" \
   --industries "Test Industry" \
   --dry-run
