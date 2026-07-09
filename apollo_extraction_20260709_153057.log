@@ -1,0 +1,5 @@
+2026-07-09 15:30:57,736 [INFO] Log file: apollo_extraction_20260709_153057.log
+2026-07-09 15:30:57,736 [INFO] Starting Apollo extraction: titles=['Influencer Marketing Manager'], industries=['Supplements']
+2026-07-09 15:30:58,424 [INFO] Starting from page 1, 0 contacts already extracted
+2026-07-09 15:30:58,424 [INFO] Searching page 1: titles=['Influencer Marketing Manager']..., industries=['Supplements']...
+2026-07-09 15:30:59,423 [INFO] Page 1: 25 contacts, 3823 total available

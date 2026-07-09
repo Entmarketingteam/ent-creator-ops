@@ -366,7 +366,7 @@ Examples:
             if len(state["contacts"]) >= args.limit:
                 break
 
-            email = contact.get("email", "").strip()
+            email = (contact.get("email") or "").strip()
 
             # Generate email if missing: first.last@domain or first@domain
             if not email:
