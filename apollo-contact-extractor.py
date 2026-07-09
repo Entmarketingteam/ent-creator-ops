@@ -158,40 +158,20 @@ class ApolloClient:
         """
         if self.dry_run:
             self.logger.info(f"[DRY RUN] Would search: titles={job_titles}, industries={industries}, page={page}")
-            return {"contacts": [], "pagination": {"page": page, "per_page": 100, "total_entries": 0}}
+            return {"people": [], "total_entries": 0}
 
-        url = f"{self.base_url}/contacts/search"
-
-        # Apollo filters: each job title is OR'd, industries are AND'd
-        filters = []
-        for title in job_titles:
-            filters.append({
-                "field_name": "current_title",
-                "operator": "contains",
-                "value": title
-            })
-
-        for industry in industries:
-            filters.append({
-                "field_name": "industry",
-                "operator": "contains",
-                "value": industry
-            })
-
-        if company_size:
-            filters.append({
-                "field_name": "company_size",
-                "operator": "in",
-                "value": company_size
-            })
+        # mixed_people/api_search returns PREVIEW records: name/email are null.
+        # Emails come from enrich_person(). contact_email_status=verified keeps
+        # enrichment credits from being wasted on email-less people.
+        url = f"{self.base_url}/mixed_people/api_search"
 
         body = json.dumps({
-            "filters": filters,
-            "pagination": {
-                "page": page,
-                "per_page": 100  # Max per page
-            },
-            "sort_by": "relevance"
+            "person_titles": job_titles,
+            "q_organization_keyword_tags": [i.lower() for i in industries],
+            "contact_email_status": ["verified"],
+            **({"organization_num_employees_ranges": company_size} if company_size else {}),
+            "page": page,
+            "per_page": 100
         })
 
         headers = {
