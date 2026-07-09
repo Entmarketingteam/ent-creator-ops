@@ -141,7 +141,7 @@ class ApolloClient:
         self.api_key = api_key
         self.logger = logger
         self.dry_run = dry_run
-        self.base_url = "https://api.apollo.io/v1"
+        self.base_url = "https://api.apollo.io/api/v1"
         self.retry_config = RetryConfig(max_attempts=5, base_delay=2.0)
 
     def search_contacts(
