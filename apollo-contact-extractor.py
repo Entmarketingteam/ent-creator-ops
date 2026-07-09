@@ -342,39 +342,32 @@ Examples:
             page=state["page"]
         )
 
-        if not result or not result.get("contacts"):
+        people = (result or {}).get("people", [])
+        if not people:
             logger.info("No more contacts found. Finished.")
             break
 
-        contacts = result.get("contacts", [])
-        pagination = result.get("pagination", {})
+        # NOTE: total_entries is TOP-LEVEL in api_search responses, not under pagination
+        total = result.get("total_entries", 0)
+        logger.info(f"Page {state['page']}: {len(people)} people, {total} total available")
 
-        logger.info(f"Page {state['page']}: {len(contacts)} contacts, {pagination.get('total_entries', '?')} total available")
-
-        # Process each contact
-        for contact in contacts:
+        # Search returns previews (email/name null) — enrich each to reveal
+        for preview in people:
             if len(state["contacts"]) >= args.limit:
                 break
 
+            person_id = preview.get("id")
+            if not person_id:
+                continue
+
+            contact = apollo.enrich_person(person_id)
+            if not contact:
+                logger.debug(f"Enrichment failed for {person_id}")
+                continue
+
             email = (contact.get("email") or "").strip()
-
-            # Generate email if missing: first.last@domain or first@domain
-            if not email:
-                first = (contact.get("first_name", "").lower() or "").replace(" ", "")
-                last = (contact.get("last_name", "").lower() or "").replace(" ", "")
-                company = contact.get("company", "").lower().replace(" ", "")
-
-                if first and (last or company):
-                    if last:
-                        email = f"{first}.{last}@{company or 'example'}.com" if company else ""
-                    else:
-                        email = f"{first}@{company}.com" if company else ""
-
-                if email:
-                    logger.debug(f"Generated email: {email}")
-
             if not email or email in seen_emails:
-                logger.debug(f"Skipped (no email or duplicate): {contact.get('first_name')} {contact.get('last_name')}")
+                logger.debug(f"Skipped (no email or duplicate): {contact.get('name')}")
                 continue
 
             # Validate email (optional)
