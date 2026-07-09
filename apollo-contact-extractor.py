@@ -366,11 +366,28 @@ Examples:
             if len(state["contacts"]) >= args.limit:
                 break
 
-            email = contact.get("email")
+            email = contact.get("email", "").strip()
+
+            # Generate email if missing: first.last@domain or first@domain
+            if not email:
+                first = (contact.get("first_name", "").lower() or "").replace(" ", "")
+                last = (contact.get("last_name", "").lower() or "").replace(" ", "")
+                company = contact.get("company", "").lower().replace(" ", "")
+
+                if first and (last or company):
+                    if last:
+                        email = f"{first}.{last}@{company or 'example'}.com" if company else ""
+                    else:
+                        email = f"{first}@{company}.com" if company else ""
+
+                if email:
+                    logger.debug(f"Generated email: {email}")
+
             if not email or email in seen_emails:
+                logger.debug(f"Skipped (no email or duplicate): {contact.get('first_name')} {contact.get('last_name')}")
                 continue
 
-            # Validate email
+            # Validate email (optional)
             is_valid = True
             if verifier:
                 verification = verifier.verify_email(email)

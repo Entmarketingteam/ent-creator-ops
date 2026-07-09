@@ -1,0 +1,9 @@
+2026-07-07 13:18:01,396 [INFO] Log file: apollo_extraction_20260707_131801.log
+2026-07-07 13:18:01,396 [INFO] Starting Apollo extraction: titles=['Influencer Marketing Manager', 'Influencer Marketing Director', 'Manager of Influencer Marketing', 'Director of Influencer Marketing', 'Head of Influencer Marketing', 'Influencer Marketing Coordinator', 'Creator Partnerships Manager', 'Partnership Marketing Manager'], industries=['Supplements', 'Beauty', 'Health & Wellness', 'Fitness', 'Food & Beverage', 'Fashion', 'Home Decor', 'Personal Care']
+2026-07-07 13:18:01,847 [WARNING] MILLION_VERIFIER_API_KEY not set. Email validation disabled.
+2026-07-07 13:18:01,848 [INFO] Starting from page 1, 0 contacts already extracted
+2026-07-07 13:18:01,848 [INFO] [DRY RUN] Would search: titles=['Influencer Marketing Manager', 'Influencer Marketing Director', 'Manager of Influencer Marketing', 'Director of Influencer Marketing', 'Head of Influencer Marketing', 'Influencer Marketing Coordinator', 'Creator Partnerships Manager', 'Partnership Marketing Manager'], industries=['Supplements', 'Beauty', 'Health & Wellness', 'Fitness', 'Food & Beverage', 'Fashion', 'Home Decor', 'Personal Care'], page=1
+2026-07-07 13:18:01,848 [INFO] No more contacts found. Finished.
+2026-07-07 13:18:01,848 [INFO] Extracted 0 valid contacts → contacts_influencer_marketing.csv
+2026-07-07 13:18:01,848 [INFO] Failed validations: 0
+2026-07-07 13:18:01,849 [INFO] Complete. Checkpoint removed.

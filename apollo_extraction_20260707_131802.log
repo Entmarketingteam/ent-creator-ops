@@ -1,0 +1,9 @@
+2026-07-07 13:18:02,337 [INFO] Log file: apollo_extraction_20260707_131802.log
+2026-07-07 13:18:02,337 [INFO] Starting Apollo extraction: titles=['Brand Partnership Manager', 'Partnerships Manager', 'Head of Partnerships', 'Director of Partnerships', 'Affiliate Marketing Manager', 'Brand Manager', 'Senior Brand Manager', 'Brand Director'], industries=['Supplements', 'Beauty', 'Fashion', 'Fitness Equipment', 'Health Tech', 'Food & Beverage']
+2026-07-07 13:18:02,762 [WARNING] MILLION_VERIFIER_API_KEY not set. Email validation disabled.
+2026-07-07 13:18:02,763 [INFO] Starting from page 1, 0 contacts already extracted
+2026-07-07 13:18:02,763 [INFO] [DRY RUN] Would search: titles=['Brand Partnership Manager', 'Partnerships Manager', 'Head of Partnerships', 'Director of Partnerships', 'Affiliate Marketing Manager', 'Brand Manager', 'Senior Brand Manager', 'Brand Director'], industries=['Supplements', 'Beauty', 'Fashion', 'Fitness Equipment', 'Health Tech', 'Food & Beverage'], page=1
+2026-07-07 13:18:02,763 [INFO] No more contacts found. Finished.
+2026-07-07 13:18:02,763 [INFO] Extracted 0 valid contacts → contacts_brand_partnerships.csv
+2026-07-07 13:18:02,763 [INFO] Failed validations: 0
+2026-07-07 13:18:02,763 [INFO] Complete. Checkpoint removed.

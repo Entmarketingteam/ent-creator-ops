@@ -1,0 +1,6 @@
+2026-07-07 13:18:00,915 [INFO] Running 2 personas: influencer_marketing, brand_partnerships
+2026-07-07 13:18:00,915 [INFO] Running persona 'influencer_marketing': Influencer Marketing Manager Influencer Marketing Director Manager of Influencer Marketing...
+2026-07-07 13:18:01,904 [INFO] ✓ Persona 'influencer_marketing' completed successfully
+2026-07-07 13:18:01,905 [INFO] Running persona 'brand_partnerships': Brand Partnership Manager Partnerships Manager Head of Partnerships...
+2026-07-07 13:18:02,790 [INFO] ✓ Persona 'brand_partnerships' completed successfully
+2026-07-07 13:18:02,793 [INFO] Merged 0 unique contacts → contacts_merged_deduped.csv

@@ -1,0 +1,9 @@
+2026-07-07 13:17:55,008 [INFO] Log file: apollo_extraction_20260707_131755.log
+2026-07-07 13:17:55,009 [INFO] Starting Apollo extraction: titles=['Influencer Marketing Manager'], industries=['Supplements']
+2026-07-07 13:17:55,426 [WARNING] MILLION_VERIFIER_API_KEY not set. Email validation disabled.
+2026-07-07 13:17:55,428 [INFO] Starting from page 1, 0 contacts already extracted
+2026-07-07 13:17:55,428 [INFO] [DRY RUN] Would search: titles=['Influencer Marketing Manager'], industries=['Supplements'], page=1
+2026-07-07 13:17:55,428 [INFO] No more contacts found. Finished.
+2026-07-07 13:17:55,429 [INFO] Extracted 0 valid contacts → contacts.csv
+2026-07-07 13:17:55,429 [INFO] Failed validations: 0
+2026-07-07 13:17:55,429 [INFO] Complete. Checkpoint removed.
