@@ -383,14 +383,15 @@ Examples:
                     is_valid = True  # Fail open
 
             if is_valid:
+                org = contact.get("organization") or {}
                 record = {
                     "first_name": contact.get("first_name", ""),
                     "last_name": contact.get("last_name", ""),
                     "email": email,
                     "title": contact.get("title", ""),
-                    "company": contact.get("company", ""),
-                    "industry": contact.get("industry", ""),
-                    "phone": contact.get("phone_number", ""),
+                    "company": org.get("name", ""),
+                    "industry": org.get("industry", ""),
+                    "phone": org.get("phone", ""),
                     "linkedin_url": contact.get("linkedin_url", ""),
                     "source": "apollo"
                 }
