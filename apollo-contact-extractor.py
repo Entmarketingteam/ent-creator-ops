@@ -182,6 +182,16 @@ class ApolloClient:
         self.logger.info(f"Searching page {page}: titles={job_titles[:2]}..., industries={industries[:2]}...")
         return api_call_with_retry(url, headers, body, self.retry_config, self.logger)
 
+    def enrich_person(self, person_id: str) -> Optional[Dict[str, Any]]:
+        """Reveal a person's email via people/match (spends 1 enrichment credit)."""
+        if self.dry_run:
+            self.logger.info(f"[DRY RUN] Would enrich person {person_id}")
+            return None
+        url = f"{self.base_url}/people/match?id={person_id}"
+        headers = {"Content-Type": "application/json", "X-Api-Key": self.api_key}
+        result = api_call_with_retry(url, headers, json.dumps({}), self.retry_config, self.logger)
+        return (result or {}).get("person")
+
 # ============================================================================
 # EMAIL VALIDATION (Million Verifier)
 # ============================================================================
