@@ -405,9 +405,8 @@ Examples:
         checkpoint.save(state)
         logger.info(f"Checkpointed: {len(state['contacts'])} contacts, page {state['page']}")
 
-        # Next page
-        total = pagination.get("total_entries", 0)
-        if len(state["contacts"]) >= total or len(state["contacts"]) >= args.limit:
+        # Next page (Apollo api_search caps paging at 500 pages / 50k records)
+        if state["page"] * 100 >= total or len(state["contacts"]) >= args.limit:
             logger.info("Reached target or end of results.")
             break
 
