@@ -448,7 +448,7 @@ Examples:
                     "industry": org.get("industry", ""),
                     "phone": org.get("phone", ""),
                     "linkedin_url": contact.get("linkedin_url", ""),
-                    "source": "apollo"
+                    "source": source
                 }
                 state["contacts"].append(record)
                 seen_emails.add(email)
