@@ -194,6 +194,30 @@ class ApolloClient:
         return (result or {}).get("person")
 
 # ============================================================================
+# EMAIL WATERFALL FALLBACK (Findymail)
+# ============================================================================
+
+class FindymailClient:
+    """Fallback email finder when Apollo has no email. Bills per successful
+    match only (~94% catch rate on SMB per cold-outreach-foundations benchmark)."""
+
+    def __init__(self, api_key: str, logger: logging.Logger, dry_run: bool = False):
+        self.api_key = api_key
+        self.logger = logger
+        self.dry_run = dry_run
+        self.retry_config = RetryConfig(max_attempts=3, base_delay=1.0)
+
+    def find_email(self, name: str, domain: str) -> Optional[str]:
+        if self.dry_run:
+            self.logger.info(f"[DRY RUN] Would Findymail: {name} @ {domain}")
+            return None
+        headers = {"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"}
+        body = json.dumps({"name": name, "domain": domain})
+        result = api_call_with_retry("https://app.findymail.com/api/search/name",
+                                     headers, body, self.retry_config, self.logger)
+        return ((result or {}).get("contact") or {}).get("email")
+
+# ============================================================================
 # EMAIL VALIDATION (Million Verifier)
 # ============================================================================
 
