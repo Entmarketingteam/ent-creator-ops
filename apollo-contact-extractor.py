@@ -348,8 +348,23 @@ Examples:
         logger.warning("MILLION_VERIFIER_API_KEY not set. Email validation disabled.")
         args.skip_validation = True
 
+    # Findymail is optional (waterfall fallback when Apollo has no email)
+    try:
+        findymail_key = subprocess.check_output(
+            ["doppler", "secrets", "get", "FINDYMAIL_API_KEY",
+             "--project", "ent-agency-automation", "--config", "dev", "--plain"],
+            text=True
+        ).strip()
+    except subprocess.CalledProcessError:
+        findymail_key = os.getenv("FINDYMAIL_API_KEY", "")
+
+    if not findymail_key and not args.verified_only:
+        logger.warning("FINDYMAIL_API_KEY not set. Waterfall disabled — falling back to --verified-only search.")
+        args.verified_only = True
+
     # Initialize clients
     apollo = ApolloClient(apollo_key, logger, dry_run=args.dry_run)
+    findymail = FindymailClient(findymail_key, logger, dry_run=args.dry_run) if findymail_key and not args.verified_only else None
     verifier = MillionVerifierClient(million_verifier_key or "", logger, dry_run=args.dry_run) if not args.skip_validation else None
     checkpoint = Checkpoint(output_dir)
 
