@@ -409,6 +409,18 @@ Examples:
                 continue
 
             email = (contact.get("email") or "").strip()
+            source = "apollo"
+
+            # Waterfall: Apollo has no email → try Findymail (name + company domain)
+            if not email and findymail:
+                name = (contact.get("name") or "").strip()
+                domain = ((contact.get("organization") or {}).get("primary_domain") or "").strip()
+                if name and domain:
+                    email = (findymail.find_email(name, domain) or "").strip()
+                    if email:
+                        source = "apollo+findymail"
+                        logger.info(f"Findymail rescued: {name} → {email}")
+
             if not email or email in seen_emails:
                 logger.debug(f"Skipped (no email or duplicate): {contact.get('name')}")
                 continue
