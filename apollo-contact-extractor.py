@@ -151,6 +151,7 @@ class ApolloClient:
         company_size: Optional[List[str]] = None,
         limit: int = 10000,
         page: int = 1,
+        verified_only: bool = False,
     ) -> Optional[Dict[str, Any]]:
         """
         Search Apollo for contacts by job title + industry.
