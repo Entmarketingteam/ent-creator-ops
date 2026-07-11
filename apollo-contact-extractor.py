@@ -381,7 +381,8 @@ Examples:
             industries=args.industries,
             company_size=args.company_size,
             limit=args.limit,
-            page=state["page"]
+            page=state["page"],
+            verified_only=args.verified_only
         )
 
         people = (result or {}).get("people", [])
