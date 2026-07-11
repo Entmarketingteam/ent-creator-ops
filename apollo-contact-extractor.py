@@ -309,6 +309,8 @@ Examples:
     parser.add_argument("--dry-run", action="store_true", help="Dry run (no API calls)")
     parser.add_argument("--limit", type=int, default=10000, help="Max contacts to extract")
     parser.add_argument("--resume", action="store_true", help="Resume from checkpoint")
+    parser.add_argument("--verified-only", action="store_true",
+                        help="Only search people Apollo holds a verified email for (skips Findymail waterfall pool)")
 
     args = parser.parse_args()
 
