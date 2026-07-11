@@ -162,14 +162,14 @@ class ApolloClient:
             return {"people": [], "total_entries": 0}
 
         # mixed_people/api_search returns PREVIEW records: name/email are null.
-        # Emails come from enrich_person(). contact_email_status=verified keeps
-        # enrichment credits from being wasted on email-less people.
+        # Emails come from enrich_person(). verified_only restricts the pool to
+        # people Apollo already holds a verified email for (no Findymail fallback).
         url = f"{self.base_url}/mixed_people/api_search"
 
         body = json.dumps({
             "person_titles": job_titles,
             "q_organization_keyword_tags": [i.lower() for i in industries],
-            "contact_email_status": ["verified"],
+            **({"contact_email_status": ["verified"]} if verified_only else {}),
             **({"organization_num_employees_ranges": company_size} if company_size else {}),
             "page": page,
             "per_page": 100
