@@ -1,0 +1,27 @@
+2026-07-11 18:42:49,205 [INFO] Log file: apollo_extraction_20260711_184249.log
+2026-07-11 18:42:49,205 [INFO] Starting Apollo extraction: titles=['Influencer Marketing Manager'], industries=['Supplements', 'Beauty']
+2026-07-11 18:42:50,146 [INFO] Starting from page 1, 0 contacts already extracted
+2026-07-11 18:42:50,147 [INFO] Searching page 1: titles=['Influencer Marketing Manager']..., industries=['Supplements', 'Beauty']...
+2026-07-11 18:42:50,398 [INFO] Page 1: 100 people, 42161 total available
+2026-07-11 18:42:50,871 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:42:51,562 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:42:52,808 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:42:53,276 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:42:54,424 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:42:55,564 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:42:56,299 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:42:57,746 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:42:59,282 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:42:59,695 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:43:01,759 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:43:03,493 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:43:05,596 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:43:06,120 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:43:08,042 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:43:08,799 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:43:10,138 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:43:13,201 [INFO] Checkpointed: 40 contacts, page 1
+2026-07-11 18:43:13,201 [INFO] Reached target or end of results.
+2026-07-11 18:43:13,203 [INFO] Extracted 40 valid contacts → test_waterfall.csv
+2026-07-11 18:43:13,203 [INFO] Failed validations: 0
+2026-07-11 18:43:13,203 [INFO] Complete. Checkpoint removed.

@@ -1,0 +1,20 @@
+2026-07-11 18:42:23,251 [INFO] Log file: apollo_extraction_20260711_184223.log
+2026-07-11 18:42:23,252 [INFO] Starting Apollo extraction: titles=['Influencer Marketing Manager'], industries=['Supplements', 'Beauty']
+2026-07-11 18:42:24,267 [INFO] Starting from page 1, 0 contacts already extracted
+2026-07-11 18:42:24,267 [INFO] Searching page 1: titles=['Influencer Marketing Manager']..., industries=['Supplements', 'Beauty']...
+2026-07-11 18:42:24,669 [INFO] Page 1: 100 people, 42160 total available
+2026-07-11 18:42:25,137 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:42:25,902 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:42:27,102 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:42:27,585 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:42:28,785 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:42:29,532 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:42:30,924 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:42:32,002 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:42:33,445 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:42:33,972 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 18:42:34,458 [INFO] Checkpointed: 15 contacts, page 1
+2026-07-11 18:42:34,458 [INFO] Reached target or end of results.
+2026-07-11 18:42:34,459 [INFO] Extracted 15 valid contacts → test_waterfall.csv
+2026-07-11 18:42:34,459 [INFO] Failed validations: 0
+2026-07-11 18:42:34,459 [INFO] Complete. Checkpoint removed.

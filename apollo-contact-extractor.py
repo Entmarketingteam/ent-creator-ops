@@ -211,7 +211,12 @@ class FindymailClient:
         if self.dry_run:
             self.logger.info(f"[DRY RUN] Would Findymail: {name} @ {domain}")
             return None
-        headers = {"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"}
+        headers = {
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": "application/json",
+            # Cloudflare blocks Python's default urllib UA (same as Smartlead CF 1010)
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+        }
         body = json.dumps({"name": name, "domain": domain})
         result = api_call_with_retry("https://app.findymail.com/api/search/name",
                                      headers, body, self.retry_config, self.logger)
