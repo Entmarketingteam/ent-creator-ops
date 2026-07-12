@@ -1,0 +1,10 @@
+2026-07-11 22:13:07,376 [INFO] Log file: apollo_extraction_20260711_221307.log
+2026-07-11 22:13:07,376 [INFO] Starting Apollo extraction: titles=['Influencer Marketing Manager'], industries=['Supplements', 'Beauty']
+2026-07-11 22:13:08,565 [INFO] Starting from page 1, 0 contacts already extracted
+2026-07-11 22:13:08,566 [INFO] Searching page 1: titles=['Influencer Marketing Manager']..., industries=['Supplements', 'Beauty']...
+2026-07-11 22:13:09,060 [INFO] Page 1: 100 people, 42214 total available
+2026-07-11 22:13:44,116 [INFO] Checkpointed: 5 contacts, page 1
+2026-07-11 22:13:44,117 [INFO] Reached target or end of results.
+2026-07-11 22:13:44,118 [INFO] Extracted 5 valid contacts → full_stack_test.csv
+2026-07-11 22:13:44,118 [INFO] Failed validations: 1
+2026-07-11 22:13:44,118 [INFO] Complete. Checkpoint removed.

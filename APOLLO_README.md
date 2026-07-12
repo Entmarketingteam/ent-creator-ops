@@ -9,10 +9,11 @@ Replicatable contact extraction pipeline for any vertical. Queries Apollo API, w
 3. **Emails come from enrichment**: `POST /api/v1/people/match?id=<id>` — 1 credit per person. `company/industry/phone` live under `person.organization`.
 4. **Search params**: `person_titles`, `q_organization_keyword_tags` (lowercase), optional `contact_email_status: ["verified"]` (use `--verified-only` when no Findymail key — every credit then yields an email).
 5. **Email waterfall**: Apollo enrich has no email → `FindymailClient` (`app.findymail.com/api/search/name`, name + org `primary_domain`, bills per match only, ~94% catch rate). Rescued rows tagged `source=apollo+findymail`.
-6. **Cloudflare on Findymail 403s Python's default urllib UA** (same as Smartlead CF 1010) — a browser `User-Agent` header is required; curl works without it, so this misdiagnoses as auth failure.
+6. **Cloudflare 403s Python's default urllib UA on BOTH Findymail and Million Verifier** (same as Smartlead CF 1010) — a browser `User-Agent` header is required; curl works without it, so this misdiagnoses as auth failure.
 7. **Never guess-generate emails** (`first.last@company.com`) — poisons deliverability. Verified/waterfall only.
+8. **Million Verifier**: key is `MILLIONVERIFIER_API_KEY` (NO underscore between MILLION and VERIFIER — the `MILLION_VERIFIER_API_KEY` spelling doesn't exist and made validation silently skip). Real API = `GET https://api.millionverifier.com/api/v3/?api=KEY&email=...` (the v4 `/verification/single` path is invented). `result: ok` = deliverable; response includes remaining `credits`.
 
-Doppler keys (`ent-agency-automation/dev`): `APOLLO_API_KEY`, `FINDYMAIL_API_KEY`, `MILLION_VERIFIER_API_KEY` (optional). Canonical cross-campaign patterns: `cold-outreach-foundations/tools/{apollo,findymail}/README.md`.
+Doppler keys (in BOTH `ent-agency-automation/dev` and `ecas/dev`): `APOLLO_API_KEY`, `FINDYMAIL_API_KEY`, `MILLIONVERIFIER_API_KEY`. Canonical cross-campaign patterns: `cold-outreach-foundations/tools/{apollo,findymail}/README.md`.
 
 ## Quick Start
 
