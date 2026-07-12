@@ -1,0 +1,20 @@
+2026-07-11 22:12:23,501 [INFO] Log file: apollo_extraction_20260711_221223.log
+2026-07-11 22:12:23,501 [INFO] Starting Apollo extraction: titles=['Influencer Marketing Manager'], industries=['Supplements', 'Beauty']
+2026-07-11 22:12:24,726 [INFO] Starting from page 1, 0 contacts already extracted
+2026-07-11 22:12:24,727 [INFO] Searching page 1: titles=['Influencer Marketing Manager']..., industries=['Supplements', 'Beauty']...
+2026-07-11 22:12:25,224 [INFO] Page 1: 100 people, 42215 total available
+2026-07-11 22:12:34,399 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 22:12:34,400 [WARNING] Failed to validate tanvi.thukral@swissbeauty.in, assuming valid and continuing
+2026-07-11 22:12:41,541 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 22:12:41,542 [WARNING] Failed to validate tjones@elfbeauty.com, assuming valid and continuing
+2026-07-11 22:12:42,222 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 22:12:42,223 [WARNING] Failed to validate ashleyg@farmacybeauty.com, assuming valid and continuing
+2026-07-11 22:12:48,021 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 22:12:48,022 [WARNING] Failed to validate vanessa.olszewska-szmelcer@primabiotic.es, assuming valid and continuing
+2026-07-11 22:12:48,681 [ERROR] Auth failure (403). Check APOLLO_API_KEY in Doppler.
+2026-07-11 22:12:48,682 [WARNING] Failed to validate victoria.von-richthofen@glow25.de, assuming valid and continuing
+2026-07-11 22:12:48,683 [INFO] Checkpointed: 5 contacts, page 1
+2026-07-11 22:12:48,683 [INFO] Reached target or end of results.
+2026-07-11 22:12:48,684 [INFO] Extracted 5 valid contacts → full_stack_test.csv
+2026-07-11 22:12:48,684 [INFO] Failed validations: 0
+2026-07-11 22:12:48,684 [INFO] Complete. Checkpoint removed.

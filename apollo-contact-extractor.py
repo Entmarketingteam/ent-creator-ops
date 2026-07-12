@@ -246,7 +246,9 @@ class MillionVerifierClient:
             return {"email": email, "result": "ok", "is_valid": True}
 
         url = f"{self.base_url}/?api={self.api_key}&email={urllib.parse.quote(email)}"
-        result = api_call_with_retry(url, {}, None, self.retry_config, self.logger)
+        # Cloudflare 403s Python's default UA (same as Findymail/Smartlead)
+        headers = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"}
+        result = api_call_with_retry(url, headers, None, self.retry_config, self.logger)
         if result:
             verdict = result.get("result", "unknown")
             # accept ok + catch_all (fail-open on unknown handled by caller)
