@@ -12,7 +12,7 @@ Usage:
 
 Config via:
   - CLI args (override)
-  - .env / Doppler secrets (APOLLO_API_KEY, MILLION_VERIFIER_API_KEY)
+  - .env / Doppler secrets (APOLLO_API_KEY, MILLIONVERIFIER_API_KEY)
   - Checkpoint resume (contacts_checkpoint.json)
 """
 
@@ -29,6 +29,7 @@ from pathlib import Path
 from typing import Optional, List, Dict, Any
 import urllib.request
 import urllib.error
+import urllib.parse
 
 # ============================================================================
 # LOGGING SETUP
@@ -338,15 +339,15 @@ Examples:
     # Million Verifier is optional
     try:
         million_verifier_key = subprocess.check_output(
-            ["doppler", "secrets", "get", "MILLION_VERIFIER_API_KEY",
+            ["doppler", "secrets", "get", "MILLIONVERIFIER_API_KEY",
              "--project", "ent-agency-automation", "--config", "dev", "--plain"],
             text=True
         ).strip()
     except subprocess.CalledProcessError:
-        million_verifier_key = os.getenv("MILLION_VERIFIER_API_KEY", "")
+        million_verifier_key = os.getenv("MILLIONVERIFIER_API_KEY", "")
 
     if not million_verifier_key and not args.skip_validation:
-        logger.warning("MILLION_VERIFIER_API_KEY not set. Email validation disabled.")
+        logger.warning("MILLIONVERIFIER_API_KEY not set. Email validation disabled.")
         args.skip_validation = True
 
     # Findymail is optional (waterfall fallback when Apollo has no email)
