@@ -1,6 +1,18 @@
 # Apollo Contact Extractor — Production-Grade, Self-Healing
 
-Replicatable contact extraction pipeline for any vertical. Queries Apollo API, validates emails, handles failures automatically, resumes from checkpoints.
+Replicatable contact extraction pipeline for any vertical. Queries Apollo API, waterfalls missing emails through Findymail, validates emails, handles failures automatically, resumes from checkpoints.
+
+## ⚠️ Apollo API laws (learned the hard way, 2026-07-09 — do NOT regress)
+
+1. **Search endpoint = `POST /api/v1/mixed_people/api_search`.** NOT `/v1/contacts/search` (that's your SAVED contacts only, and it silently ignores unknown body fields — an invented `filters` array paged 3,823 saved contacts unfiltered). NOT `mixed_people/search` (deprecated, 4xx for API callers).
+2. **Search returns PREVIEWS**: `name` and `email` are null by design. `total_entries` is TOP-LEVEL, not under `pagination`.
+3. **Emails come from enrichment**: `POST /api/v1/people/match?id=<id>` — 1 credit per person. `company/industry/phone` live under `person.organization`.
+4. **Search params**: `person_titles`, `q_organization_keyword_tags` (lowercase), optional `contact_email_status: ["verified"]` (use `--verified-only` when no Findymail key — every credit then yields an email).
+5. **Email waterfall**: Apollo enrich has no email → `FindymailClient` (`app.findymail.com/api/search/name`, name + org `primary_domain`, bills per match only, ~94% catch rate). Rescued rows tagged `source=apollo+findymail`.
+6. **Cloudflare on Findymail 403s Python's default urllib UA** (same as Smartlead CF 1010) — a browser `User-Agent` header is required; curl works without it, so this misdiagnoses as auth failure.
+7. **Never guess-generate emails** (`first.last@company.com`) — poisons deliverability. Verified/waterfall only.
+
+Doppler keys (`ent-agency-automation/dev`): `APOLLO_API_KEY`, `FINDYMAIL_API_KEY`, `MILLION_VERIFIER_API_KEY` (optional). Canonical cross-campaign patterns: `cold-outreach-foundations/tools/{apollo,findymail}/README.md`.
 
 ## Quick Start
 
