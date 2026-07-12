@@ -231,32 +231,28 @@ class MillionVerifierClient:
         self.api_key = api_key
         self.logger = logger
         self.dry_run = dry_run
-        self.base_url = "https://api.millionverifier.com/api/v4"
+        # Real MV single-check API is v3, GET with query params (probed 2026-07-11)
+        self.base_url = "https://api.millionverifier.com/api/v3"
         self.retry_config = RetryConfig(max_attempts=3, base_delay=1.0)
 
     def verify_email(self, email: str) -> Optional[Dict[str, Any]]:
         """
         Verify single email. Returns {email, result, is_valid}.
-        result in: "valid" | "invalid" | "disposable" | "catch_all" | "unknown"
+        result in: "ok" | "invalid" | "disposable" | "catch_all" | "unknown" | "error"
         """
         if self.dry_run:
             self.logger.debug(f"[DRY RUN] Would verify: {email}")
-            return {"email": email, "result": "valid", "is_valid": True}
+            return {"email": email, "result": "ok", "is_valid": True}
 
-        url = f"{self.base_url}/verification/single"
-        body = json.dumps({"email": email})
-        headers = {
-            "Content-Type": "application/json",
-            "Authorization": f"Bearer {self.api_key}",
-        }
-
-        result = api_call_with_retry(url, headers, body, self.retry_config, self.logger)
+        url = f"{self.base_url}/?api={self.api_key}&email={urllib.parse.quote(email)}"
+        result = api_call_with_retry(url, {}, None, self.retry_config, self.logger)
         if result:
-            is_valid = result.get("data", {}).get("result") == "valid"
+            verdict = result.get("result", "unknown")
+            # accept ok + catch_all (fail-open on unknown handled by caller)
             return {
                 "email": email,
-                "result": result.get("data", {}).get("result", "unknown"),
-                "is_valid": is_valid
+                "result": verdict,
+                "is_valid": verdict in ("ok", "catch_all"),
             }
         return None
 
